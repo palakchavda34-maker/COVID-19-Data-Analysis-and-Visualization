@@ -1,175 +1,85 @@
 # COVID-19 Data Analysis and Visualization
 
-## 1. Project Overview
+**Group:** Psquare  
+**Project domain:** Python, data analysis and visualization  
+**Dataset:** [Novel Corona Virus 2019 Dataset on Kaggle](https://www.kaggle.com/datasets/sudalairajkumar/novel-corona-virus-2019-dataset)
 
-**Project Name:** COVID-19 Data Analysis and Visualization  
-**Group Name:** Psquare  
-**Domain:** Python, Data Analysis and Data Visualization
+## 1. Project overview
+This project uses Python to clean, analyze, and visualize historical COVID-19 data, including reported confirmed cases, deaths, and recoveries.
 
-This project analyzes the Novel Coronavirus 2019 dataset using Python. It focuses on cleaning and preprocessing COVID-19 data, exploring trends in confirmed cases, deaths, and recoveries, and presenting findings through meaningful visualizations.
+## 2. Objectives
+- Inspect and clean the dataset.
+- Handle missing values and exact duplicate rows.
+- Convert dates and numerical columns to appropriate types.
+- Investigate potential outliers and document them.
+- Generate at least six visualizations.
+- Summarize actual findings in `insights.md`.
 
-The project demonstrates how Python libraries can be used to process real-world data and extract useful information from it.
+## 3. Tools
+Python, Pandas, NumPy, Matplotlib, Seaborn, Git, and GitHub.
 
-## 2. Dataset Information
-
-**Dataset Name:** Novel Corona Virus 2019 Dataset
-
-**Dataset Source:** [Kaggle - Novel Corona Virus 2019 Dataset](https://www.kaggle.com/datasets/sudalairajkumar/novel-corona-virus-2019-dataset)
-
-The dataset contains historical COVID-19 records, including observation dates, geographical information, confirmed cases, deaths, and recoveries.
-
-## 3. Project Objectives
-
-- Load and explore the COVID-19 dataset using Pandas.
-- Identify and handle missing values.
-- Detect and remove duplicate records where appropriate.
-- Correct data types and investigate outliers.
-- Analyze COVID-19 trends over time and across countries.
-- Create at least six data visualizations.
-- Prepare a short report summarizing the findings.
-
-## 4. Technologies and Libraries Used
-
-- **Python:** Main programming language.
-- **Pandas:** Data loading, cleaning, and manipulation.
-- **NumPy:** Numerical operations.
-- **Matplotlib:** Data visualization.
-- **Seaborn:** Statistical visualization.
-- **Git and GitHub:** Version control and team collaboration.
-- **Jupyter Notebook / VS Code:** Development environment.
-
-## 5. Project Structure
-
+## 4. Repository structure
 ```text
-COVID-19-Data-Analysis-and-Visualization/
-│
-├── data/
-│   └── covid_19_data.csv
-├── graphs/
-│   ├── confirmed_cases_over_time.png
-│   ├── deaths_over_time.png
-│   ├── recoveries_over_time.png
-│   ├── top_countries.png
-│   ├── country_comparison.png
-│   └── case_distribution.png
-├── data_cleaning.py
-├── visualizations.py
-├── main.py
-├── requirements.txt
-├── insights.md
-├── CONTRIBUTIONS.md
-└── README.md
+data_cleaning.py       # Data inspection, cleaning, outlier report
+visualizations.py      # Six saved visualizations and summary insights
+main.py                # Runs the complete workflow
+requirements.txt        # Python dependencies
+data/                  # Place downloaded CSV here (not committed by default)
+data/processed/        # Generated cleaned CSV and outlier report
+graphs/                # Generated graph images
+insights.md             # Generated summary of results
+CONTRIBUTIONS.md        # Team task allocation and evidence
 ```
 
-*Note: This structure describes the intended organization. The files and graph names should match the actual files committed to the repository.*
+## 5. Dataset setup
+1. Download the dataset from [Kaggle](https://www.kaggle.com/datasets/sudalairajkumar/novel-corona-virus-2019-dataset).
+2. Place its CSV file in the `data/` folder. The script recognizes `covid_19_data.csv` and also searches for another CSV in that folder.
+3. Check the dataset terms before redistributing the raw file.
 
-## 6. Data Cleaning and Preprocessing
-
-The following data-cleaning tasks are included in the project:
-
-1. Inspect the dataset's rows, columns, and data types.
-2. Identify missing values and handle them using appropriate methods.
-3. Detect duplicate records and remove only inappropriate duplicates.
-4. Convert date columns into the correct date format.
-5. Convert numerical columns into suitable numeric data types.
-6. Investigate outliers and decide how to handle them based on the data.
-7. Verify the cleaned dataset before visualization.
-
-## 7. Data Visualizations
-
-At least six visualizations will be created:
-
-1. **Confirmed Cases Over Time:** Shows the trend in reported confirmed cases.
-2. **Deaths Over Time:** Shows the trend in reported deaths.
-3. **Recoveries Over Time:** Shows the trend in reported recoveries.
-4. **Top 10 Countries by Confirmed Cases:** Compares countries with high reported case counts.
-5. **Country-wise Case Comparison:** Compares confirmed cases, deaths, and recoveries across selected countries.
-6. **Distribution of Confirmed Cases:** Shows how reported cases are distributed across countries.
-
-The graphs will be saved in the `graphs/` folder and interpreted in the insights report.
-
-## 8. Tools and Methodology
-
-The project follows these steps:
-
-1. Download the dataset from Kaggle.
-2. Load the CSV file into Pandas.
-3. Explore and clean the data.
-4. Perform analysis on dates, countries, confirmed cases, deaths, and recoveries.
-5. Generate and save visualizations.
-6. Interpret the findings.
-7. Document the code, methodology, and results in GitHub.
-
-## 9. Key Insights
-
-This section will be completed after running the analysis.
-
-The report will describe:
-
-- Changes in reported confirmed cases over time.
-- Trends in reported deaths and recoveries.
-- Countries with the highest confirmed case counts in the selected period.
-- Differences between countries in reported cases, deaths, and recoveries.
-- Data-quality issues and limitations identified during preprocessing.
-
-All findings will be based on the actual analysis results.
-
-## 10. How to Run the Project
-
-### Step 1: Clone the repository
-
+## 6. Installation and execution
 ```bash
-git clone https://github.com/palakchavda34-maker/COVID-19-Data-Analysis-and-Visualization.git
-cd COVID-19-Data-Analysis-and-Visualization
+python -m venv .venv
 ```
-
-### Step 2: Install dependencies
-
+On Windows, activate it with:
+```bash
+.venv\Scripts\activate
+```
+Install packages and run:
 ```bash
 python -m pip install -r requirements.txt
-```
-
-### Step 3: Add the dataset
-
-Download the dataset from Kaggle and place the required CSV file in the `data/` folder. Ensure the filename matches the one used in the code.
-
-### Step 4: Run the project
-
-```bash
 python main.py
 ```
 
-The script should execute the cleaning and visualization workflow and save the resulting graphs in the `graphs/` folder.
+The program writes the cleaned dataset and an outlier report to `data/processed/`, six PNG graphs to `graphs/`, and a generated summary to `insights.md`.
 
-## 11. Team Members and Contributions
+## 7. Data cleaning method
+The script reports missing values, removes exact duplicate rows, parses observation dates, converts case-count columns to numeric values, and handles missing/non-numeric counts using zero as a documented preprocessing choice. Negative counts are clipped to zero. Potential outliers are flagged using the interquartile range (IQR) rule and reported rather than automatically deleted, since large case counts may be legitimate.
 
-### Member 1: Palak Chavda - IU2441230599
+These choices must be reviewed against the dataset and explained in the final report. Filling missing counts with zero does not establish that the true value was zero.
 
-- Dataset exploration and data cleaning.
-- Missing-value and duplicate handling.
-- Data-type correction and outlier investigation.
-- Development and testing of the data-cleaning module.
+## 8. Visualizations
+1. Global reported confirmed cases over time.
+2. Global reported deaths over time.
+3. Global reported recoveries over time.
+4. Top 10 countries by reported confirmed cases.
+5. Confirmed cases, deaths, and recoveries in top countries.
+6. Distribution of reported confirmed cases among the top 15 countries.
 
-### Member 2: Pari Shah - IU2441230647
+Graphs are generated by the code. Add or embed them in this README after running the project and committing the image files.
 
-- Development of visualization functions.
-- Creation of at least six graphs.
-- Country-wise and time-series analysis.
-- Preparation of the insights report.
+## 9. Findings
+See [`insights.md`](insights.md) after running the analysis. Report the observation date with all country comparisons. The data represents historical reported counts and should not be interpreted as current infection totals.
 
-Both members will contribute to testing, documentation, and final integration. Individual contributions will be documented through GitHub commits and pull requests.
+## 10. Team contributions
+See [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md). Both members should commit using their own GitHub accounts and update the contribution table with real evidence.
 
-## 12. Conclusion
+## 11. Limitations
+Reporting practices and completeness vary across locations and dates. Cumulative reported counts may be revised, and data cleaning choices affect results. The analysis is descriptive and does not establish causation.
 
-This project demonstrates the use of Python for cleaning, analyzing, and visualizing COVID-19 data. It provides practical experience in data preprocessing, exploratory data analysis, graphical representation, and collaborative software development using GitHub.
-
-The project aims to present historical COVID-19 data in a clear and understandable form while recognizing the limitations of the available dataset.
-
-## 13. References
-
-1. [Novel Corona Virus 2019 Dataset - Kaggle](https://www.kaggle.com/datasets/sudalairajkumar/novel-corona-virus-2019-dataset)
-2. [Pandas Documentation](https://pandas.pydata.org/docs/)
-3. [NumPy Documentation](https://numpy.org/doc/)
-4. [Matplotlib Documentation](https://matplotlib.org/stable/)
-5. [Seaborn Documentation](https://seaborn.pydata.org/)
-6. [GitHub Documentation](https://docs.github.com/)
+## 12. References
+- [Novel Corona Virus 2019 Dataset - Kaggle](https://www.kaggle.com/datasets/sudalairajkumar/novel-corona-virus-2019-dataset)
+- [Pandas documentation](https://pandas.pydata.org/docs/)
+- [NumPy documentation](https://numpy.org/doc/)
+- [Matplotlib documentation](https://matplotlib.org/stable/)
+- [Seaborn documentation](https://seaborn.pydata.org/)
+- [GitHub documentation](https://docs.github.com/)
